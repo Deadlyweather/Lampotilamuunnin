@@ -5,4 +5,7 @@ FC = C = (F - 32) % 1.8
 FK = K = (F + 459.67) * 5/9
 KC = C = K - 273.15
 KF = F = (K * 9/5) - 459.67
-/*
+*/
+ToggleEventListener("D1", "D2", "D3");
+document.getElementById("convertBtn").addEventListener("click", Convert);
+
