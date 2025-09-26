@@ -7,28 +7,28 @@
 </head>
 <body>
     <h1>Lämpötila muunnin</h1>
-    <select id="" name="yksikkö">
-        <option id="CF" value="">Celsius -> Fahrenheit</option>
-        <option id="CK" value="">Celsius -> Kelvin</option>
-        <option id="FC" value="">Fahrenheit -> Celsius</option>
-        <option id="FK" value="">Fahrenheit -> Kelvin</option>
-        <option id="KC" value="">Kelvin -> Celsius</option>
-        <option id="KF" value="">Kelvin -> Fahrenheit</option>
+    <select id="valinta" name="valinta">
+        <option value="CF">Celsius -> Fahrenheit</option>
+        <option value="CK">Celsius -> Kelvin</option>
+        <option value="FC">Fahrenheit -> Celsius</option>
+        <option value="FK">Fahrenheit -> Kelvin</option>
+        <option value="KC">Kelvin -> Celsius</option>
+        <option value="KF">Kelvin -> Fahrenheit</option>
     </select>
     <p>Syötä Lämpötila:</p>
     <div>
-        <input id="luku" type="text">
-        <button onclick="" id="convertBtn">Muunna</button>
+        <input id="määrä" value="" type="text">
+        <button onclick="convertTemperature()">Muunna</button>
     </div>
     <form>
-        <input type="radio" id="D1" value="D1" name="desimaali">
+        <input type="radio" id="D1" value="1" name="desimaali" checked>
         <label for="D1">Desimaali 1</label><br>
-        <input type="radio" id="D2" value="D2" name="desimaali">
+        <input type="radio" id="D2" value="2" name="desimaali">
         <label for="D2">Desimaali 2</label><br>
-        <input type="radio" id="D3" value="D3" name="desimaali">
+        <input type="radio" id="D3" value="3" name="desimaali">
         <label for="D3">Desimaali 3</label><br>
     </form>
-    <p id="luku"></p>
-    <script src="script.js"></script>
+    <p id="output">32,0°F</p>
+    <script src="Editor.js"></script>
 </body>
 </html>
