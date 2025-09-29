@@ -3,6 +3,7 @@ function convertTemperature() {
 
     if (input === "") {
         document.getElementById("output").innerText = "Tyhjät muutokset ovat kielletty";
+        document.getElementById("info").innerText = "Virhe!";
         return;
     }
 
@@ -10,6 +11,7 @@ function convertTemperature() {
 
     if (isNaN(number)) {
         document.getElementById("output").innerText = "Merkit ovat kielletty";
+        document.getElementById("info").innerText = "Virhe!";
         return;
     }
 
@@ -44,16 +46,13 @@ function convertTemperature() {
             tulos = (number - 273.15) * 1.8 + 32;
             palautus = tulos.toFixed(desimaalit) + " °F";
             break;
-        default:
-            document.getElementById("output").innerText = "Tuntematon muunnos";
-            return;
     }
 
     document.getElementById("output").innerText = palautus;
-
     if (tulos < 0) {
         document.getElementById("info").innerText = "Tulos on negatiivinen";
-    } else {
-        document.getElementById("info").innerText = "Tulos on positiivinen"; 
+    }
+    else {
+        document.getElementById("info").innerText = "";
     }
 }
