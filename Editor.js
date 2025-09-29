@@ -1,24 +1,15 @@
-/*
-CF = F = (C * 1.8) + 32 (0)
-CK = K = C + 273.15 (0)
-FC = C = (F - 32) / 1.8 (−273,15)
-FK = K = (F + 459.67) * 5/9 (0)
-KC = C = K - 273.15 (−273,15)
-KF = F = (K * 9/5) - 459.67 (0)
-*/
-
 function convertTemperature() {
     let input = document.getElementById("määrä").value.trim();
 
     if (input === "") {
-        console.log("Tyhjää muunnosta ei sallita");
+        document.getElementById("output").innerText = "Tyhjät muutokset ovat kielletty";
         return;
     }
 
     let number = parseFloat(input);
 
     if (isNaN(number)) {
-        console.log("Merkkien antaminen ei ole sallittua");
+        document.getElementById("output").innerText = "Merkit ovat kielletty";
         return;
     }
 
@@ -26,37 +17,43 @@ function convertTemperature() {
     let desimaalit = document.querySelector('input[name="desimaali"]:checked').value;
 
     let palautus;
+    let tulos;
 
     switch (muunnos) {
         case "CF":
-            palautus = number * 9 / 5 + 32;
-            palautus = palautus.toFixed(desimaalit) + "°F";
+            tulos = (number * 1.8) + 32;
+            palautus = tulos.toFixed(desimaalit) + " °F";
             break;
         case "CK":
-            palautus = number + 273.15;
-            palautus = palautus.toFixed(desimaalit) + "K";
+            tulos = number + 273.15;
+            palautus = tulos.toFixed(desimaalit) + " K";
             break;
         case "FC":
-            palautus = (number - 32) * 5 / 9;
-            palautus = palautus.toFixed(desimaalit) + "°C";
+            tulos = (number - 32) / 1.8;
+            palautus = tulos.toFixed(desimaalit) + " °C";
             break;
         case "FK":
-            palautus = (number - 32) * 5 / 9 + 273.15;
-            palautus = palautus.toFixed(desimaalit) + "K";
+            tulos = (number + 459.67) * 5 / 9;
+            palautus = tulos.toFixed(desimaalit) + " K";
             break;
         case "KC":
-            palautus = number - 273.15;
-            palautus = palautus.toFixed(desimaalit) + "°C";
+            tulos = number - 273.15;
+            palautus = tulos.toFixed(desimaalit) + " °C";
             break;
         case "KF":
-            palautus = (number - 273.15) * 9 / 5 + 32;
-            palautus = palautus.toFixed(desimaalit) + "°F";
+            tulos = (number - 273.15) * 1.8 + 32;
+            palautus = tulos.toFixed(desimaalit) + " °F";
             break;
-        
-    }
-    if (palautus < 0) {
-            console.log("Lämpötila on negatiivinen");
+        default:
+            document.getElementById("output").innerText = "Tuntematon muunnos";
             return;
-        }
+    }
+
     document.getElementById("output").innerText = palautus;
+
+    if (tulos < 0) {
+        document.getElementById("info").innerText = "Tulos on negatiivinen";
+    } else {
+        document.getElementById("info").innerText = "Tulos on positiivinen"; 
+    }
 }
